@@ -67,17 +67,17 @@ export default function Home() {
       timestamp: new Date().toISOString()
     }
     
-    console.log('=== EXPERIMENT DATA ===')
-    console.log('Name:', data.name)
-    console.log('Age:', data.age)
-    console.log('Gender:', data.gender)
-    console.log('Group:', data.group)
-    console.log('Listening Time (seconds):', data.listeningTime)
-    console.log('Comments:', data.comments)
-    console.log('Timestamp:', data.timestamp)
-    console.log('=====================')
-    
-    setStage('complete')
+    try {
+      await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      setStage('complete');
+    } catch (error) {
+      console.error('Error:', error);
+      setStage('complete');
+    }
   }
 
   return (
