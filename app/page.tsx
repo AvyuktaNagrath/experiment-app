@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 
-type Stage = 'intro' | 'familiarization' | 'test' | 'debrief' | 'complete'
+type Stage = 'intro' | 'volumecheck' | 'familiarization' | 'test' | 'debrief' | 'complete'
 
 interface ParticipantData {
   name: string
@@ -109,7 +109,7 @@ export default function Home() {
               </div>
               <form className="space-y-6">
                 <div>
-                  <label className="block text-base font-semibold mb-2 text-black">Name</label>
+                  <label className="block text-base font-semibold mb-2 text-black">Full Name</label>
                   <input
                     type="text"
                     value={participant.name}
@@ -154,13 +154,28 @@ export default function Home() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setStage('familiarization')}
+                  onClick={() => setStage('volumecheck')}
                   disabled={!participant.name || !participant.age || !participant.gender || !participant.group}
                   className="w-full bg-black text-white py-4 rounded text-lg font-semibold disabled:bg-gray-400 hover:bg-gray-800"
                 >
                   Continue
                 </button>
               </form>
+            </div>
+          )}
+
+          {stage === 'volumecheck' && (
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-6 text-black">Volume Check</h2>
+              <p className="text-xl text-gray-800 mb-8">
+                Please make sure your volume is turned on and at a comfortable listening level before continuing.
+              </p>
+              <button
+                onClick={() => setStage('familiarization')}
+                className="bg-black text-white px-8 py-4 rounded text-lg font-semibold hover:bg-gray-800"
+              >
+                My Volume is On - Continue
+              </button>
             </div>
           )}
 
