@@ -168,7 +168,7 @@ export default function Home() {
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-6 text-black">Familiarization Phase</h2>
               <p className="mb-8 text-lg text-gray-800">
-                Please listen to the following audio carefully. The audio will play automatically and you must listen to the entire sequence.
+                Please listen to the following audio carefully. The audio will play automatically and you must listen to the entire sequence. It's only like 2 minutes just bear with it.
               </p>
               <audio
                 ref={familiarizationAudioRef}
@@ -185,7 +185,7 @@ export default function Home() {
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-6 text-black">Test Phase</h2>
               <p className="mb-8 text-lg text-gray-800">
-                Click Start to begin listening. Press Stop whenever you feel like it.
+                Click Start to begin listening. Press Stop to turn the stimulus off whenever you feel like it.
               </p>
               <audio
                 ref={testAudioRef}
